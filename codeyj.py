@@ -52,5 +52,6 @@ def codeyjencode(string):   #将字符串转化为Code yj编码
             if not re.match(codeyjRule2,encodedstrList[i])==None:
                 if not re.match(codeyjRule3,encodedstrList[i+1])==None:
                     encodedstrList[i]=encodedstrList[i][:-1]
+                    break
     encodedstrList.append('1')
     return "".join(encodedstrList)

@@ -7,7 +7,7 @@ from codeyj import code2img,codeyjencode
 if __name__=='__main__':
 
     #在这里输入需要进行codeyj编码的字符串(全大写)
-    ostr="W"
+    ostr="ELYSIUM"
 
     img=code2img(codeyjencode(ostr))
 
