@@ -3,11 +3,15 @@ import re
 alphabet="1234567890ABCDEFGHIJKLMNOPQRSTUVWSYZ-. *"
 bars=["WNNNW","NWNNW","WWNNN","NNWNW","WNWNN","NWWNN","NNNWW","WNNWN","NWNWN","NNWWN"]
 spaces=[2,3,4,1]
-codeyjRule1=r".*010$"   #code yj规则1：对尾部为010的编码，去掉10
-codeyjRule2=r".*0110$"  #code yj规则2/3：如果一个编码的尾部为0110，其下一个编码头部为110，则去掉两个11中间的0
+#code yj规则1：对尾部为010的编码，去掉10
+#code yj Rule 1: If the end of a code is 010, remove the 10
+codeyjRule1=r".*010$"   
+#code yj规则2/3：如果一个编码的尾部为0110，其下一个编码头部为110，则去掉两个11中间的0
+#code yj Rule 2/3: If the end of a code is 0110, and the head of the next code is 110, remove the 0 between two codes 
+codeyjRule2=r".*0110$"  
 codeyjRule3=r"^110.*"
 
-def encode39(char): #转化为code39码
+def encode39(char): #转化为code39码/convert a char to code 39
     i=alphabet.find(char)
     encodedchar=""
     tspace=0
@@ -23,7 +27,7 @@ def encode39(char): #转化为code39码
             encodedchar=encodedchar+'0'
     return encodedchar
 
-def code2img(code,codewidth=2,imgheight=50):    #将二进制码转换为图片
+def code2img(code,codewidth=2,imgheight=50):    #将二进制码转换为图片/covert binary code to picture
     imgrow=[]
     for c in code:
         if c=='1':
@@ -39,7 +43,7 @@ def code2img(code,codewidth=2,imgheight=50):    #将二进制码转换为图片
 
     return bimg
 
-def codeyjencode(string):   #将字符串转化为Code yj编码
+def codeyjencode(string):   #将字符串转化为Code yj编码/convert string to code yj 
     uncodedstr=string
     encodedstrList=[]
     for c in uncodedstr:
